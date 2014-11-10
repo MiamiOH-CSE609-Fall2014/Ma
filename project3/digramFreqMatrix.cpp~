@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+#include "digramFreqMatrix.h"
+
+using namespace std;
+
+vector< vector<int> > digramFreqMatrix(map<string, int> freq){
+  vector< vector<int> > freqmatrix;
+  vector<int> tvector;
+  tvector.push_back(freq["AA"]);
+  tvector.push_back(freq["AG"]);
+  tvector.push_back(freq["AC"]);
+  tvector.push_back(freq["AT"]);
+
+  tvector.push_back(freq["GA"]);
+  tvector.push_back(freq["GG"]);
+  tvector.push_back(freq["GC"]);
+  tvector.push_back(freq["GT"]);
+
+  tvector.push_back(freq["CA"]);
+  tvector.push_back(freq["CG"]);
+  tvector.push_back(freq["CC"]);
+  tvector.push_back(freq["CT"]);
+
+  tvector.push_back(freq["TA"]);
+  tvector.push_back(freq["TG"]);
+  tvector.push_back(freq["TC"]);
+  tvector.push_back(freq["TT"]);
+
+  freqmatrix.push_back(tvector);
+  return freqmatrix;
+}
