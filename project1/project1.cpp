@@ -12,6 +12,9 @@ int main()
   cin>>row2;
   cout<<"Input the colum number of Matrix2"<<endl;
   cin>>col2;
+  if (col1<=0||col2<=0||row1<=0||row2<=0)
+    {  cout<<"Invalid Input"<<endl;
+      return 1;}
   if (col1!=row2)
     {
       cout<<"Invalid Input"<<endl;

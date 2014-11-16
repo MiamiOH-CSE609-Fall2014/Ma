@@ -6,6 +6,9 @@
 #include "parseFastaFile.h"
 #include "digramFreqScores.h"
 #include "digramFreqMatrix.h"
+#include "parseScoringFile.h"
+#include "scoreSequence.h"
+#include "findHighScore.h"
 using namespace std;
 
 
@@ -30,10 +33,40 @@ cout<<"The calculated frequence matrix is :"<<endl;
 for (vector<int> tempvector: freqmatrix){    
 for (int i:tempvector){
       cout<<i<<" ";}   
-       cout<<endl;
+ cout<<endl;            // This cout part is refer to Lin's work.
+      
+
 }
 
-
-
+ cout<<"Please input the scoring path: "<<endl;
+ string scoring_path;
+ cin>>scoring_path;
+ vector< vector<int> > scoringMatrix=parseScoringFile(scoring_path);
+ cout<<endl;
+ cout<<"The scoring Matrix is: "<<endl;
+ for(vector<int> temp : scoringMatrix){
+   for (int i : temp){
+     cout<<i<<" ";}
+   cout<<endl;
+ }
+ cout<<endl;
+ cout<<"How many sequences would you like to score? "<<endl;
+ int num_seq;
+ cin>>num_seq;
+ string tpseq;
+ vector<string> seqs;
+ for(int i=0;i<num_seq;i++){
+   cout<<"Please enter the sequence "<<i+1<<endl;
+   cin>>tpseq;
+   seqs.push_back(tpseq);
+ }
+ cout<<endl;
+ tuple<int,int,string>highscore=findHighScore(sq,seqs,scoringMatrix);
+ cout<<"maxSequence is : "<<endl;
+ cout<<get<2>(highscore)<<endl;
+ cout<<"with the maxScore of : "<<endl;
+ cout<<get<1>(highscore)<<endl;
+ cout<<" and is at the position of: "<<endl;
+ cout<<get<0>(highscore)<<endl;
  return 0;
 }
